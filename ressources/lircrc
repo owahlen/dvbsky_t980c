@@ -1,0 +1,211 @@
+### Kaffeine (using mce usb remote with its usb IR receiver)
+#To find out qdbus commands for Kaffeine run "qdbus org.kde.kaffeine".This will output something like:
+#/
+#/KBookmarkManager
+#/KBookmarkManager/kfilePlaces
+#/KDebug
+#/KIO
+#/KIO/Scheduler
+#/MainApplication
+#/Player
+#/Television
+#/TrackList
+#/kaffeine
+#/kaffeine/MainWindow_1
+
+#then run whatever more specific qdbus commands you want from above interfaces by:
+#qdbus org.kde.kaffeine /<name of interface>
+#E.g: qdbus org.kde.kaffeine /Television OR qdbus org.kde.kaffeine /Player
+
+begin
+    prog   = irexec
+    button = KEY_POWER2
+    config = qdbus org.kde.kaffeine /MainApplication quit
+end
+
+begin
+   prog = irexec
+   button = KEY_1
+   config = xte 'key 1'
+end
+
+begin
+   prog = irexec
+   button = KEY_2
+   config = xte 'key 2'
+end
+
+begin
+   prog = irexec
+   button = KEY_3
+   config = xte 'key 3'
+end
+
+begin
+   prog = irexec
+   button = KEY_4
+   config = xte 'key 4'
+end
+
+begin
+   prog = irexec
+   button = KEY_5
+   config = xte 'key 5'
+end
+
+begin
+   prog = irexec
+   button = KEY_6
+   config = xte 'key 6'
+end
+
+begin
+   prog = irexec
+   button = KEY_7
+   config = xte 'key 7'
+end
+
+begin
+   prog = irexec
+   button = KEY_8
+   config = xte 'key 8'
+end
+
+begin
+   prog = irexec
+   button = KEY_9
+   config = xte 'key 9'
+end
+
+begin
+   prog = irexec
+   button = KEY_0
+   config = xte 'key 0'
+end 
+
+begin
+   prog = irexec
+   button = KEY_FAVORITES
+   config = kaffeine
+end
+
+begin
+    prog   = irexec
+    button = KEY_CHANNELUP
+    config = qdbus org.kde.kaffeine /Player Next
+end
+
+begin
+    prog   = irexec
+    button = KEY_CHANNELDOWN
+    config = qdbus org.kde.kaffeine /Player Prev
+end
+
+begin
+    prog   = irexec
+    button = KEY_MUTE
+    config = qdbus org.kde.kaffeine /Player ToggleMuted
+end
+
+begin
+    prog   = irexec
+    button = KEY_VOLUMEUP
+    config = qdbus org.kde.kaffeine /Player IncreaseVolume
+end
+
+begin
+    prog   = irexec
+    button = KEY_VOLUMEDOWN
+    config = qdbus org.kde.kaffeine /Player DecreaseVolume
+end
+
+begin
+    prog = irexec
+    button = KEY_MENU
+    config = xte "keydown Alt_L" "key D" "keyup Alt_L"
+end
+
+begin
+    prog   = irexec
+    button = KEY_ZOOM
+    config = qdbus org.kde.kaffeine /Player ToggleFullScreen
+end
+
+begin
+    prog = irexec
+    button = KEY_UP
+    config = xte 'key Up'
+end
+
+begin
+    prog = irexec
+    button = KEY_DOWN
+    config = xte 'key Down'
+end
+
+begin
+    prog = irexec
+    button = KEY_LEFT
+    config = xte 'key Left'
+end
+
+begin
+    prog = irexec
+    button = KEY_RIGHT
+    config = xte 'key Right'
+end
+
+begin
+    prog = irexec
+    button = KEY_OK
+    config = xte 'key Return'
+end
+
+begin
+    prog = irexec
+    button = KEY_EPG
+    config = xte 'key G'
+end
+
+begin
+    prog = irexec
+    button = KEY_EXIT
+    config = xte 'key Escape'
+end
+
+begin
+    prog = irexec
+    button = KEY_PLAY
+    config = qdbus org.kde.kaffeine /Player Play
+end
+
+begin
+    prog = irexec
+    button = KEY_PAUSE
+    config = qdbus org.kde.kaffeine /Player Pause
+end
+
+begin
+    prog = irexec
+    button = KEY_STOP
+    config = qdbus org.kde.kaffeine /Player Stop
+end
+
+begin
+        prog = irexec
+        button = KEY_REWIND
+        config = qdbus org.kde.kaffeine /Player LongSkipBackward
+end
+
+begin
+        prog = irexec
+        button = KEY_FASTFORWARD
+        config = qdbus org.kde.kaffeine /Player LongSkipForward
+end
+
+begin
+    prog   = irexec
+    button = KEY_INFO
+    config = qdbus org.kde.kaffeine /Television ToggleOsd
+end
+
