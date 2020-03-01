@@ -14,7 +14,7 @@ page of the card there are two versions that require different firmeware files.
 Those files can be downloaded from the 
 [OpenELEC firmware collection](https://github.com/OpenELEC/dvb-firmware/tree/master/firmware).
 
-In contrast to what is noted on the linux TV page the
+In contrast to what is noted on the linuxtv page the
 Version 2 of the card requires the following **two** files to be copied
 into the `/lib/firmware` folder:
 * [dvb-demod-si2168-b40-01.fw](ressources/dvb-demod-si2168-b40-01.fw)
@@ -33,8 +33,8 @@ In order to setup this device lirc needs to be installed:
 sudo apt-get install lirc
 ```
 
-However in eoan the lirc package has a bug that leads to a segmentation fault
-in the installation process. To solve this copy the following files into
+However, in eoan the lirc package has a bug that leads to a segmentation fault
+in the installation process. To solve this, copy the following files into
 the folder `/etc/lirc` and re-installing the lirc package.
 * [lircd.conf](ressources/lircd.conf)
 * [lirc_options.conf](ressources/lirc_options.conf)
