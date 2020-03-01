@@ -74,3 +74,10 @@ and add an entry with the following properties:
 * Name: _irexec_
 * Command: _irexec -d_
 * Comment: _IR-Remote_
+
+The irexec configuration relies on `qdbus` and `xte` to be installed.
+Note that xte is part of the xautomation package.
+```
+sudo apt-get install qdbus
+sudo apt-get install xautomation
+```
