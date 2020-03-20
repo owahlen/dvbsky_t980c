@@ -81,3 +81,14 @@ Note that xte is part of the xautomation package.
 sudo apt-get install qdbus
 sudo apt-get install xautomation
 ```
+
+### Suspend-Resume Issue
+After a suspend to ram and subsequent resume there is no TV signal and the IR remote stops working.
+This seems to be related to a bug in the cx23885 module.
+A workaround is to unload and load the module with a script.
+Copy the file [dvbsky-sleep.service](ressources/dvbsky-sleep.service) to the folder
+`/etc/systemd/system` and enable the service:
+```
+sudo cp dvbsky-sleep.service /etc/systemd/system
+sudo systemctl enable dvbsky-sleep.service
+```

@@ -1,0 +1,13 @@
+[Unit]
+Description=Reload module cx23885 on Suspend/Resume
+Before=sleep.target
+StopWhenUnneeded=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/sbin/modprobe -r cx23885 
+ExecStop=/sbin/modprobe cx23885 enable_885_ir=1
+
+[Install]
+WantedBy=sleep.target
