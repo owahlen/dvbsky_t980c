@@ -1,4 +1,4 @@
-# Installation instructions for DVBSky T980C card under Ubuntu eoan (19.10)
+# Installation instructions for DVBSky T980C card under Ubuntu Focal Fossa (20.04)
 The
 [DVBSky T980C DVB-T2/T/C PCIe with CI](http://www.dvbsky.net/Products_T980C.html)
 card is a nice match for watching cable TV on a Linux machine since it is natively supported since kernel 3.19.
@@ -33,7 +33,7 @@ In order to setup this device lirc needs to be installed:
 sudo apt-get install lirc
 ```
 
-However, in eoan the lirc package has a bug that leads to a segmentation fault
+However, in Focal Fossa the lirc package has a bug that leads to a segmentation fault
 in the installation process. To solve this, copy the following files into
 the folder `/etc/lirc` and re-installing the lirc package.
 * [lircd.conf](ressources/lircd.conf)
@@ -42,16 +42,20 @@ the folder `/etc/lirc` and re-installing the lirc package.
 The IR controller is disabled by default in the `cx23885` kernel module.
 It can be enabled by setting the module option `enable_885_ir` to 1.
 This can be achieved permanently by copying the file
-[cx23885.conf](ressources/cx23885.conf) to the folder `/etc/motprobe.d`.
+[cx23885.conf](ressources/cx23885.conf) to the folder `/etc/modprobe.d`.
 
 Check if the currently logged in user is in the `video`
 group with the command `id`.
-If this is not the case the user with the following command:
+If this is not the case, add the currently logged in user with the following command:
 ```
 sudo usermod -a -G video $(whoami)
 ```
 
-The 5.3.0 eoan kernel comes with a keymap for the DVBSky IR that maps
+The package `ir-keytable` is required to operate the IR:
+```
+sudo apt-get install ir-keytable
+```
+It comes with a keymap for the DVBSky IR that maps
 scan codes to key codes. The codes do not match exactly the ones of the
 remote shipped with the T980C card. This can be solved by replacing
 the file `/lib/udev/rc_keymaps/dvbsky.toml` with the following file
@@ -75,10 +79,10 @@ and add an entry with the following properties:
 * Command: _irexec -d_
 * Comment: _IR-Remote_
 
-The irexec configuration relies on `qdbus` and `xte` to be installed.
+The irexec configuration relies on `qdbus-qt5` and `xte` to be installed.
 Note that xte is part of the xautomation package.
 ```
-sudo apt-get install qdbus
+sudo apt-get install qdbus-qt5
 sudo apt-get install xautomation
 ```
 
